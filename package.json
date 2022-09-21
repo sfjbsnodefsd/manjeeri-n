@@ -1,0 +1,21 @@
+{
+  "name": "maintraining",
+  "version": "1.0.0",
+  "description": "This is our first nodejs program",
+  "main": "index.js",
+  "scripts": {
+    "start":"node nodejs/index.js",
+    "dev":"nodemon nodejs/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfjbsnodefsd/manjeeri-n.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sfjbsnodefsd/manjeeri-n/issues"
+  },
+  "homepage": "https://github.com/sfjbsnodefsd/manjeeri-n#readme"
+}
