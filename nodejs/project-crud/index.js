@@ -31,3 +31,15 @@ app.get('/getemployees',(req,res)=>{
         }
     })
 })
+
+// get employee details by id
+
+app.get('/getemployee/:id', (req,res) => {
+    mysqlConnection.query("select * from employee where empid = ?", [req.params.id] ,(err,rows,fields)=>{
+        if(!err){
+            console.log(rows)
+        } else{
+            console.log(err)
+        }
+    })
+})
