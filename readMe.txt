@@ -4,3 +4,6 @@ to start with node - npm run start
 Site will run at http://localhost:5000/
 Api will run at http://localhost:3000/
 inside respective folders
+
+create procedure
+if employee doesnt exist- insert else update
