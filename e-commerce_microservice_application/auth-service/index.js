@@ -17,6 +17,12 @@ app.post('/',()=>{
     return res.json({})
 })
 
+// users list
+app.get("/allusers", async (req,res) =>{
+    const allUsers = await User.find({})
+    return res.json(allUsers)
+})
+
 //register
 app.post("/auth/reg", async(req,res) => {
     const {email, password, name} = req.body;
