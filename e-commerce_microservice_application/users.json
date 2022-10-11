@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "63443cb0c66782127362ba8d"
+  },
+  "name": "Manjeeri",
+  "dob": {
+    "$date": {
+      "$numberLong": "820454400000"
+    }
+  },
+  "password": "Node@2022",
+  "pancard": "RJWPN3456e",
+  "adharno": "234567898765",
+  "salaryearned": 10000,
+  "allowances": 1000,
+  "pensiontype": "self",
+  "bankdetail": {
+    "bankname": "CBI",
+    "accountno": "1234567890987",
+    "banktype": "private"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1665416318844"
+    }
+  },
+  "__v": 0
+}]
