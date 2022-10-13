@@ -2,9 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = 3000;
-const jwt = require("jsonwebtoken");
 const Pensioner = require("./Pensioner");
 const isAuthenticated = require("../isAuthenticated");
+const request = require('postman-request')
 app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/auth-service",{
@@ -18,6 +18,7 @@ mongoose.connect("mongodb://localhost:27017/auth-service",{
 
 // calculate pension amount
 const calculatePension = async (adharno) => {
+
   const pensionerDetail = await Pensioner.findOne({adharno:adharno}).select('salaryearned allowances pensiontype bankdetail');
 
   const bankCharge = {
