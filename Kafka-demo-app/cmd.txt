@@ -1,0 +1,7 @@
+pm list -g will show global installed packages
+
+npm run start
+
+npm i node-rdkafka --save -g
+
+npm config set msvs_version 2017
