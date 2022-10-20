@@ -21,7 +21,7 @@ const getPensionerDetail = (aadhaarno) =>
     request({
       url : `http://localhost:3002/pensioner/${aadhaarno}`,
       headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGhhcm5vIjoiMjM0NTY3ODk4NzY1IiwibmFtZSI6Ik1hbmplZXJpIiwiaWF0IjoxNjY1NjcxNTgyfQ.wtJus4TI8Q3kO56ERlEhfRtnIDrRsjazJkFgbehxPXk'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGhhcm5vIjoiMjM0NTY3ODk4NzY4IiwibmFtZSI6Ik1hbmplZXJpMiIsImlhdCI6MTY2NjI3NDU0OH0.o6Rthm-VRxo9TTl7tRr8o4RDiCGNVL5m-jlS0DfGDd4'
       } 
     },
       (err, res, body) => {
@@ -37,8 +37,7 @@ const getPensionerDetail = (aadhaarno) =>
 const calculatePension = async (aadhaarno) => {
 
   const pensionerDetail = await getPensionerDetail(aadhaarno);
-
-    if(pensionerDetail.sucess === 1){
+    if(pensionerDetail.sucess === 1 || JSON.stringify(pensionerDetail) === '{}'){
         return pensionerDetail
     } else {
       //const pensionerDetail = await Pensioner.findOne({adharno:adharno}).select('salaryearned allowances pensiontype bankdetail');
@@ -69,7 +68,11 @@ const calculatePension = async (aadhaarno) => {
 app.post("/ProcessPension", isAuthenticated, async (req, res) => {
   calculatePension(req.body.adharno)
   .then(pensionDetails => {
-    return res.json(pensionDetails)
+    if(pensionDetails && JSON.stringify(pensionDetails) !== '{}') {
+      return res.json({success:true,pensionDetails})
+    }else {
+      return res.json({success:false})
+    }
   })
 });
 

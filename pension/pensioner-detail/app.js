@@ -19,7 +19,12 @@ mongoose.connect(
 
 app.get("/pensioner/:adharno", isAuthenticated, async (req, res) => {
   const pensionerDetail = await Pensioner.findOne({adharno:req.params.adharno}).select('-_id -password -created_at -__v');
-  return res.json(pensionerDetail)
+  const response = {}
+  if(pensionerDetail){
+    return res.json(pensionerDetail)
+  }else{    
+    return res.json(response)
+  }
 });
 
 app.listen(PORT, () => {
