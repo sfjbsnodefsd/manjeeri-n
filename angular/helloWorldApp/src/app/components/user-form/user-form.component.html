@@ -1,14 +1,31 @@
 <h2>{{title}}</h2>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="name">Name</span>
+    </div>
+    <input type="text" class="form-control"  placeholder="Please enter name" [(ngModel)] = 'name' aria-label="name" aria-describedby="name">
+  </div>
 
-<input type="text" placeholder="Please enter name" [(ngModel)] = 'name'> name
-<br>
-<input type="text" placeholder="age" [(ngModel)] = 'age'> age
-<br>
-Gender
-<br>
-<div>
-    <input type="radio" name="gender" id="gender" value="male" [(ngModel)] = 'gender'> Male
-    <input type="radio" name="gender" id="gender" value="female" [(ngModel)] = 'gender'> Female
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="age">Age</span>
+    </div>
+    <input type="text" class="form-control"   placeholder="age" [(ngModel)] = 'age' aria-label="name" aria-describedby="age">
+  </div>
+<h5>Gender</h5>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="gender" value="male" [(ngModel)] = 'gender' checked>
+    <label class="form-check-label" for="male">
+        Male
+    </label>
 </div>
 
-<button (click)="save()">Submit</button>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="gender" value="female" [(ngModel)] = 'gender' checked>
+    <label class="form-check-label" for="female">
+        Female
+    </label>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="save()">Submit</button>

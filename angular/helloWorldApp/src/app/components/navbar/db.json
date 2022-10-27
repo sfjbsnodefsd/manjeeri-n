@@ -1,0 +1,10 @@
+{
+    "users":[
+        {
+            "name":"Nanjeeri",
+            "age":25,
+            "gender":"Female",
+            "id":1
+        }
+    ]
+}
