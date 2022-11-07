@@ -9,8 +9,9 @@ import { Todo } from 'src/app/Entity/Todo';
   styleUrls: ['./add-todo.component.css'],
 })
 export class AddTodoComponent implements OnInit {
-  AddTodo(todo: string) {
+  AddTodo(todo:string) {
     const newTodo = new Todo();
+    console.log(todo);
     newTodo.title = todo;
     this.store.dispatch(new TodoAdd(newTodo));
   }
