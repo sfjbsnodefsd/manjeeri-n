@@ -1,0 +1,80 @@
+<div class="container">
+    <h2>Registration</h2>
+    <form [formGroup]="registrationForm"  (ngSubmit)="createAccount()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="name" class="form-control" id="name" placeholder="Enter Full Name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date Of Birth:</label>
+        <input type="date" class="form-control" id="dob" placeholder="Enter Date Of Birth" formControlName="dob">
+      </div>
+      <div class="form-group">
+        <label for="pancard">Pancard</label>
+        <input type="text" class="form-control" id="pancard" placeholder="Enter Pancard" formControlName="pancard">
+      </div>
+      <div class="form-group">
+        <label for="adharno">Aadhar Number:</label>
+        <input type="text" class="form-control" id="adharno" placeholder="Enter Aadhar Number" formControlName="adharno">
+      </div>
+      <div class="form-group">
+        <label for="salaryearned">Salary Earned</label>
+        <input type="text" class="form-control" id="salaryearned" placeholder="Enter Salary" formControlName="salaryearned">
+      </div>
+      <div class="form-group">
+        <label for="allowances">Allowances</label>
+        <input type="text" class="form-control" id="allowances" placeholder="Enter Allowances" formControlName="allowances">
+      </div>
+      <div class="form-group">
+        <label >Pension Type</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="pensiontype" value = "self" id="self">
+          <label class="form-check-label" for="self">
+            Self
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="pensiontype" id="family"  value = "family">
+          <label class="form-check-label" for="family">
+            Family
+          </label>
+        </div>
+      </div>
+      <div  formGroupName="bankdetail">
+        
+        <div class="form-group">
+          <label for="bankname">Bank Name</label>
+          <input type="text" class="form-control" id="bankname" placeholder="Enter Bank Name" formControlName="bankname">
+        </div>
+        
+        <div class="form-group">
+          <label for="accountno">Account Number</label>
+          <input type="text" class="form-control" id="accountno" placeholder="Enter Account Number" formControlName="accountno">
+        </div>
+
+        <div class="form-group">
+          <label >Bank Type</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="banktype" value = "public" id="public">
+            <label class="form-check-label" for="public">
+              Public
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="banktype" id="private"  value = "private">
+            <label class="form-check-label" for="private">
+              Private
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
