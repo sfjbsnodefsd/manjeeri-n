@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,6 +9,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 
 export class RegistrationComponent implements OnInit {
+
+  isAlert : boolean = false
+  message : string = ''
+  alertClass : string = ''
 
   registrationForm = new FormGroup({
     name: new FormControl(''),
@@ -25,13 +30,22 @@ export class RegistrationComponent implements OnInit {
     })
   });
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   createAccount() {
-    console.warn(this.registrationForm.value);
+    this.authService.addUser(this.registrationForm.value).subscribe((res: any) => {
+        this.message = res.message
+        this.isAlert = true
+      if(res.status){ // success
+        this.alertClass = 'success';
+        this.registrationForm.reset()
+      } else { // failed to create
+        this.alertClass = 'warning';
+      }
+    })
   }
 
 }

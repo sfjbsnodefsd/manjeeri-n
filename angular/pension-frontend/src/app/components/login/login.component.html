@@ -1,17 +1,23 @@
 <div class="container">
-    <h2>Vertical (basic) form</h2>
-    <form action="/action_page.php">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" name="remember"> Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+  <h2>Login</h2>
+  <form [formGroup]="loginForm"  (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="adharno">Aadhar Number:</label>
+      <input type="text" class="form-control" id="adharno" placeholder="Enter Aadhar Number" formControlName="adharno">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="alert alert-{{alertClass}} alert-dismissible fade show" role="alert" *ngIf = "isAlert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  
+</div>

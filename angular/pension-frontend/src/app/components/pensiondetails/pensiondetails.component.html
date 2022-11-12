@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th colspan="2">Pensioner Basic Details</th>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>{{pensioner.name}}</td>
+          </tr>
+          <tr>
+            <td>Date Of Birth</td>
+            <td>{{pensioner.dob | date}}</td>
+          </tr>
+          <tr>
+            <td>Pan Card</td>
+            <td>{{pensioner.pancard}}</td>
+          </tr>
+          <tr>
+            <td>Pension Type</td>
+            <td>{{pensioner.pensiontype}}</td>
+          </tr>
+          <tr>
+            <td>Aadhar Number</td>
+            <td>{{pensioner.adharno}}</td>
+          </tr>
+          <tr>
+            <td>Salary</td>
+            <td>{{pensioner.salaryearned}}</td>
+          </tr>
+          <tr>
+            <td>Allowances</td>
+            <td>{{pensioner.allowances}}</td>
+          </tr>
+          <tr>
+            <th colspan="2">Bank Details</th>
+          </tr>
+          <tr>
+            <td>Bank Name</td>
+            <td>{{pensioner.bankdetail.bankname}}</td>
+          </tr>
+          <tr>
+            <td>Account Number</td>
+            <td>{{pensioner.bankdetail.accountno}}</td>
+          </tr>
+          <tr>
+            <td>Bank Type</td>
+            <td>{{pensioner.bankdetail.banktype}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th colspan="2">Pension Details</th>
+          </tr>
+          <tr>
+            <td>Pension Amount</td>
+            <td>{{calculatedPension.pensionAmount}}</td>
+          </tr>
+          <tr>
+            <td>Bank Service Charge</td>
+            <td>{{calculatedPension.bankServiceCharge}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="calculatePension()">
+        Calculate Pension
+      </button>
+    </div>
+</div>
+</div>

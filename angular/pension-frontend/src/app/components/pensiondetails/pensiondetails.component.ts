@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { Pensioner } from 'src/app/entity/pensioner';
+import { PensionDetailsService } from '../../services/pension-details.service'
+import { LocalstorageService } from '../../services/localstorage.service';
+
+@Component({
+  selector: 'app-pensiondetails',
+  templateUrl: './pensiondetails.component.html',
+  styleUrls: ['./pensiondetails.component.css']
+})
+
+export class PensiondetailsComponent implements OnInit {
+
+  pensioner: any;
+  aadharNo: string;
+  calculatedPension: any
+
+  constructor(
+    private _authStorageService: LocalstorageService,
+    private PensionDetails: PensionDetailsService
+  ) {
+      this.aadharNo = this._authStorageService.get('aadhar') || '';
+      this.PensionDetails.pensionerDetail(this.aadharNo).subscribe((res:any) =>{
+        if(res.status)
+          this.pensioner = res.pensionerDetail;
+      })
+  }
+
+  ngOnInit(): void {
+  }
+
+  calculatePension() {
+    this.PensionDetails.calculatePension(this.aadharNo).subscribe((res:any) =>{
+      if(res.status)
+        this.calculatedPension = res.pensionDetails
+    })
+  }
+
+}
