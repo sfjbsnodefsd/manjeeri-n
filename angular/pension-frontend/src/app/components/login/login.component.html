@@ -1,13 +1,15 @@
+<app-navbar></app-navbar>
+
 <div class="container">
   <h2>Login</h2>
   <form [formGroup]="loginForm"  (ngSubmit)="login()">
     <div class="form-group">
       <label for="adharno">Aadhar Number:</label>
-      <input type="text" class="form-control" id="adharno" placeholder="Enter Aadhar Number" formControlName="adharno">
+      <input type="text" class="form-control" id="adharno" placeholder="Enter Aadhar Number" formControlName="adharno" required>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

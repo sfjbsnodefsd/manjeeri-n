@@ -66,7 +66,7 @@ app.post("/auth/login", async (req, res) => {
         adharno,
         name: user.name,
       };
-      jwt.sign(payload, "secret", (err, token) => {
+      jwt.sign(payload, "secret", {expiresIn:20},(err, token) => {
         if (err) {
           throw(err)
         }
