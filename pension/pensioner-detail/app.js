@@ -19,7 +19,7 @@ mongoose.connect(
   }
 );
 
-app.get("/pensioner/:adharno", isAuthenticated, async (req, res) => {
+app.get("/pensioner/:adharno", async (req, res) => {
   try {
     const pensionerDetail = await Pensioner.findOne({adharno:req.params.adharno})
     .select('-_id -password -created_at -__v');

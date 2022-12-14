@@ -5,9 +5,9 @@ var cors = require('cors');
 const PORT = 3001;
 const User = require("./User");
 const jwt = require("jsonwebtoken");
-// using crypt
-const cryptoJs = require('crypto-js');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
 app.use(express.json());
 app.use(cors())
 
@@ -34,7 +34,8 @@ app.post("/auth/reg", async (req, res) => {
     if (userExists) {
       throw("User already exists")
     } else {
-      const encryptedPassword = cryptoJs.AES.encrypt(JSON.stringify(password),'aderhY6688SelfcSlo87u9').toString();
+      const encryptedPassword = bcrypt.hashSync(password, salt);
+      req.body.password = encryptedPassword
       const newUser = new User({...req.body});
       newUser.save();
       return res.json({
@@ -55,22 +56,24 @@ app.post("/auth/reg", async (req, res) => {
 app.post("/auth/login", async (req, res) => {
   try{
     const { adharno, password } = req.body;
+    const encryptedPassword = bcrypt.hashSync(password, salt);
     let user;
-    if(adharno && adharno.length)
+    if(adharno && adharno.length){
       user = await User.findOne({ adharno });
+    }
     else
       throw('Aadhar Number cannot be empty');
     if (!user) {
       throw("User does not exist");
     } else {
-      if (password !== user.password) {
+      if (encryptedPassword !== user.password) {
         throw("Incorrect password");
       }
       const payload = {
         adharno,
         name: user.name,
       };
-      jwt.sign(payload, "secret", {expiresIn:20},(err, token) => {
+      jwt.sign(payload, "aderhY6688SelfcSlo87u9", {expiresIn:'1d'},(err, token) => {
         if (err) {
           throw(err)
         }

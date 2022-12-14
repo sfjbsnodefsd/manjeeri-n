@@ -58,7 +58,7 @@ const calculatePension = async (adharno) => {
       }   
 }
 
-app.post("/ProcessPension", isAuthenticated, async (req, res) => {
+app.post("/ProcessPension", async (req, res) => {
   calculatePension(req.body.adharno)
   .then(pensionDetails => {
     if(pensionDetails && JSON.stringify(pensionDetails) !== '{}') {
