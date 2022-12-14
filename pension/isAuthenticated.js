@@ -5,7 +5,7 @@ module.exports = async function isAuthenticated(req, res, next) {
   try {
     const token = req.headers["authorization"].split(" ")[1];
 
-    jwt.verify(token, "secret", (err, user) => {
+    jwt.verify(token, "aderhY6688SelfcSlo87u9", (err, user) => {
       if (err) {
         return res.json({
           sucess: 0,

@@ -7,8 +7,8 @@ const amqp = require("amqplib");
 const Product = require("./Product");
 const isAuthenticated = require("../isAuthenticated");
 app.use(express.json());
-var channel, connection;
-var order;
+let channel, connection;
+let order;
 mongoose.connect(
   "mongodb://localhost:27017/product-service",
   {
@@ -17,7 +17,6 @@ mongoose.connect(
   },
   () => {
     console.log(`product service DB  Connected`);
-    // console.log(pro);
   }
 );
 

@@ -15,7 +15,6 @@ mongoose.connect(
   },
   () => {
     console.log(`order service DB  Connected`);
-    // console.log(pro);
   }
 );
 async function connect() {
@@ -28,8 +27,8 @@ async function connect() {
 
 function createOrder(products,userEmail){
   let total = 0 ;
-  for(t=0; t<products.length; ++t) {
-    total += products[t].price;
+  for (let t of products) {
+    total += t.price;
   }
   const newOrder = new Order({
     products,

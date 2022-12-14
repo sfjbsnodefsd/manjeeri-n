@@ -5,6 +5,9 @@ var cors = require('cors');
 const PORT = 3001;
 const User = require("./User");
 const jwt = require("jsonwebtoken");
+// using crypt
+const cryptoJs = require('crypto-js');
+
 app.use(express.json());
 app.use(cors())
 
@@ -22,7 +25,7 @@ mongoose.connect(
 // register
 app.post("/auth/reg", async (req, res) => {
   try {
-    const { adharno } = req.body;
+    const { adharno,password } = req.body;
     let userExists;
     if(adharno && adharno.length)
       userExists = await User.findOne({ adharno });
@@ -31,6 +34,7 @@ app.post("/auth/reg", async (req, res) => {
     if (userExists) {
       throw("User already exists")
     } else {
+      const encryptedPassword = cryptoJs.AES.encrypt(JSON.stringify(password),'aderhY6688SelfcSlo87u9').toString();
       const newUser = new User({...req.body});
       newUser.save();
       return res.json({
